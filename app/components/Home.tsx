@@ -52,21 +52,31 @@ const Home = () => {
       {/* Yoga Poses Section */}
       <Text style={styles.posesHeader}>My Poses:</Text>
       <View style={styles.posesContainer}>
-        {poses.map(pose => (
-          <View key={pose.id} style={styles.poseContainer}>
-            {pose.id < 5 ? (
-              <Image source={imageMapping[pose.id]} style={styles.poseImage} />
-            ) : (
-              <Image source={{ uri: pose.image_url }} style={styles.poseImage} />
-            )}
-            <Text style={styles.poseText}>{pose.english_name}</Text>
-            <Text style={styles.poseSubText}>{pose.sanskrit_name}</Text>
-          </View>
-        ))}
+      {poses.map(pose => (
+        <View key={pose.id} style={styles.poseContainer}>
+          <Image source={{ uri: pose.image_url }} style={styles.poseImage} />
+          <Text style={styles.poseText}>{pose.english_name}</Text>
+          <Text style={styles.poseSubText}>{pose.sanskrit_name}</Text>
+
+          {/* <Text style={styles.poseDetailText}>Target Body Parts: {pose.target_body_parts.join(', ')}</Text>
+          <Text style={styles.poseDetailText}>Benefits: {pose.benefits.join(', ')}</Text>
+          <Text style={styles.poseDetailText}>Contraindications: {pose.contraindications.join(', ')}</Text> */}
+        </View>
+      ))}
       </View>
     </ScrollView>
   );
 };
+
+const Pose = ({ name }) => (
+  <View style={styles.poseContainer}>
+    <Image 
+      source={{ uri: 'https://example.com/pose-icon.png' }} 
+      style={styles.poseImage} 
+    />
+    <Text style={styles.poseText}>{name}</Text>
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -79,7 +89,7 @@ const styles = StyleSheet.create({
   },
   trendingContainer: {
     marginBottom: 20,
-    position: 'relative',
+    position: 'relative', 
   },
   trendingImage: {
     width: '100%',
