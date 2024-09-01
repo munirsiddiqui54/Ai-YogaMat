@@ -43,7 +43,7 @@ const Recommendations= () => {
     >
       {Object.keys(imageMapping).map(key => (
         <View key={key} style={styles.imageContainer}>
-          <Image source={{uri:imageMapping[key]}} style={styles.image} />
+          <Image source={{uri:`${imageMapping[key]}`}} style={styles.image} />
         </View>
       ))}
     </ScrollView>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F8F8',
     paddingHorizontal: 20,
     borderRadius: 20,
-    margin: 20,
+    marginTop: 15,
     width: 950,
   },
   trendingContainer: {

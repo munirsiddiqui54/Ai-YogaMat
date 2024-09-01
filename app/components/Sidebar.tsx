@@ -80,7 +80,7 @@ const navigationElements = [
   },
   {
     title: "Recommendations",
-    slug: "/recommendations",
+    slug: "/recommendation",
     iconUrl: "",
   },
   {
@@ -115,9 +115,11 @@ const pairedDevices = [
 
 const styles = StyleSheet.create({
   container: {
-    width: "20%",
+    width: 280,
     padding: 10,
-    backgroundColor: "white",
+    borderRadius:15,
+    margin:20,
+    backgroundColor: "#ffffff65",
   },
   imageContainer: {
     flexDirection: "row",
@@ -137,7 +139,10 @@ const styles = StyleSheet.create({
   },
   navigationBtn: {
     height: 35,
-    marginHorizontal: 10,
+    margin: 3,
+    marginHorizontal:10,
+
+    backgroundColor: "#ffffff65",
     borderRadius: 50,
     justifyContent: "center",
     paddingHorizontal: 20,
@@ -146,7 +151,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#4E3B7A", // Active background color
   },
   inactiveNavigationBtn: {
-    backgroundColor: "white", // Inactive background color
+    backgroundColor: "#ffffff20", // Inactive background color
   },
   navigationText: {
     fontSize: 20,

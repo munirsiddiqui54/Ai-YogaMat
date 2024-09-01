@@ -54,7 +54,7 @@ const Home = () => {
       <View style={styles.posesContainer}>
       {poses.map(pose => (
         <View key={pose.id} style={styles.poseContainer}>
-          <Image source={{ uri: pose.image_url }} style={styles.poseImage} />
+          <Image source={imageMapping[pose.id]} style={styles.poseImage} />
           <Text style={styles.poseText}>{pose.english_name}</Text>
           <Text style={styles.poseSubText}>{pose.sanskrit_name}</Text>
 
@@ -68,15 +68,7 @@ const Home = () => {
   );
 };
 
-const Pose = ({ name }) => (
-  <View style={styles.poseContainer}>
-    <Image 
-      source={{ uri: 'https://example.com/pose-icon.png' }} 
-      style={styles.poseImage} 
-    />
-    <Text style={styles.poseText}>{name}</Text>
-  </View>
-);
+
 
 const styles = StyleSheet.create({
   container: {
@@ -84,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F8F8',
     paddingHorizontal: 20,
     borderRadius: 20,
-    margin: 20,
+    marginTop:15,
     width: 950,
   },
   trendingContainer: {
