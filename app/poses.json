@@ -1,19 +1,172 @@
-[
+[  
+{
+  "id": 0,
+  "sanskrit_name": "Ustrasana",
+  "english_name": "Camel Pose",
+  "procedure": [
+    "First of all, kneel down on the floor.Keep your thighs and feet together.Toes should be pointing back and resting on the floor.",
+    "Bring the knees and the feet about one foot apart and stand on the knees.",
+    "Inhale, bend backward slowly.",
+    "Exhale; place the right palm on the right heel and left palm on the left heel.",
+    "The thighs should be vertical to the floor and the head tilted backward.The weight of the body should be evenly supported by the arms and legs.",
+    "Maintain the pose as long as you can.",
+    "Exhale and come to the original position slowly."
+  ],
+  "target_body_parts": [
+    "Back",
+    "Spine",
+    "Shoulders",
+    "Core",
+    "Abdominal Muscle"
+  ],
+  "benefits": [
+    "Improves digestion.Stretches and opens the front of the body. It also strengthens the back and shoulders.",
+    "Relieves the body of lower back ache.",
+    "Improves flexibility of the spine and also improves posture.",
+    "Helps overcome menstrual discomfort."
+  ],
+  "contraindications": [
+    "Back Injury",
+    "Neck Injury",
+    "Blood Pressure Issues"
+  ],
+  "created_at": "",
+  "updated_at": "",
+  "image_url": "https://www.dropbox.com/s/o5gr4lngltsdg5r/camel.svg?raw=1",
+  "yt_videos": []
+},
+
+{
+  "id": 1,
+  "sanskrit_name": "Balasana",
+  "english_name": "Child's Pose",
+  "procedure": [
+    "Sit on your knees on the yoga mats i.e. Vajrasana. In this case, rest your upper body on the thighs.",
+    "Keep both knees of your feet sticking to each other or at a short distance from each other and keep the waist perfectly straight.",
+    "Now take a deep breath and tilt the upper body towards the front such that chest may rest gently on the thighs.",
+    "Stretch your arms out in front with the palms facing the floor. You may also move the arms towards the back, with the palms facing upwards.",
+    "Stay in the post for a few minutes, and return to the initial sitting posture. Now, gradually open your eyes.",
+    "To get out of this easy, first, bring your palms under the shoulder and slowly raise your upper body and return to the Vajrasana.",
+    "In the end, rub your hands together and gently place them on your eyes and face to experience their warmth."
+  ],
+  "target_body_parts": ["Spine", "Back", "Hip", "Thighs", "Ankle"],
+  "benefits": [
+    "It stretches your lower back and relaxes the spine.",
+    "It strengthens and stretches your thighs, ankles and muscle of hips.",
+    "While doing Balasana yoga asana, there is pressure on your stomach and intestines which also enhances the digestive process."
+  ],
+  "contraindications": [
+    "Pregnancy",
+    "Spine Injury",
+    "Knee Injury",
+    "Blood Pressure Issues"
+  ],
+  "created_at": "",
+  "updated_at": "",
+  "image_url": "https://www.dropbox.com/s/ini3uwali0q5gxa/child.svg?raw=1",
+  "yt_videos": []
+},
+{
+  "id": 2,
+  "sanskrit_name": "Adho Mukha Svanasana",
+  "english_name": "Downward-Facing Dog",
+  "procedure": [
+    "Come onto your fours. Form a table such that your back forms the tabletop and your hands and feet form the legs of the table.",
+    "As you exhale, lift the hips up, straightening the knees and elbows, forming an inverted V-shape with the body.",
+    "Hands are shoulder-width apart, feet are hip-width apart and parallel to each other. Toes point straight ahead.",
+    "Press your hands into the ground. Widen through the shoulder blades. Keep the neck lengthened by touching the ears to the inner arms.",
+    "Hold the downward dog pose and take long deep breaths. Look towards the navel.",
+    "Exhale. Bend the knees, return to table pose. Relax."
+  ],
+  "target_body_parts": [
+    "Upper Body",
+    "Shoulders",
+    "Neck",
+    "Arms",
+    "Legs",
+    "Spine"
+  ],
+  "benefits": [
+    "It energizes and rejuvenates the body.",
+    "It lengthens the spine, strengthens the muscles of the chest increasing lung capacity.",
+    "It brings strength throughout the body especially the arms, shoulders, legs, feet.",
+    "It increases circulation to the brain."
+  ],
+  "contraindications": [
+    "High Blood Pressure Issues",
+    "Weak Eye Capillaries",
+    "Shoulder Injury"
+  ],
+  "created_at": "",
+  "updated_at": "",
+  "image_url": "https://www.dropbox.com/s/75xa1bduu2u5y7d/downdog.svg?raw=1",
+  "yt_videos": []
+},
+
+{
+  "id": 3,
+  "sanskrit_name": "Vrksasana",
+  "english_name": "Tree",
+  "procedure": [
+    "Take a moment to feel both your feet root into the floor, your weight distributed equally on all four corners of each foot.",
+    "Begin to shift your weight into your right foot, lifting your left foot off the floor. ",
+    "Keep your right leg straight but don't lock the knee.",
+    "Bend your left knee and bring the sole of your left foot high onto your inner right thigh. ",
+    "Press your foot into your thigh and your thigh back into your foot with equal pressure.This will help you keep both hips squared toward the front so your right hip doesn't jut out.",
+    "Focus your gaze (Drishti) on something that doesn't move to help you keep your balance",
+    "Take 5 to 10 breaths, then lower your left foot to the floor and do the other side."
+  ],
+  "target_body_parts": ["Entire Body", "Legs"],
+  "contraindications": ["Knee Injury", "Migraine headaches"],
+  "benefits": [
+    "Increases concentration",
+    "Improves physical balance and mental resilience ",
+    "Helps relieve sciatica",
+    "Strengthens the legs",
+    "Opens the hips",
+    "Boosts energy",
+    "Strengthens your core",
+    "Improves your posture and alignment"
+  ],
+  "created_at": "",
+  "updated_at": "",
+  "image_url": "",
+  "yt_videos": []
+},
+
+{
+  "id": 4,
+  "sanskrit_name": "Anjaneyasana",
+  "english_name": "Low Lunge",
+  "procedure": [
+    "First, stand in Tadasana. In this pose, your body is in a straight, aligned position.",
+    "Next, stretch your left leg back fully with the lower left leg (part of the left leg below the knee) touching the floor.",
+    "Bend your right leg at the knee and ensure the right foot is placed in front of the left foot. The legs should be placed at a distance that avoids wobbling legs.",
+    "Next, stretch your arms over your head in the namaskar position.",
+    "This asana depicts lord hanuman, the son of Anjani; hence it is called Anjaneyasana.",
+    "Breathe normally and hold this position for 3-5 minutes.",
+    "Breathe out and return to the original position.",
+    "Repeat the above steps with alternate legs."
+  ],
+  "target_body_parts": ["Glutes", "Legs", "Shoulders", "Core", "Lower Body"],
+  "contraindications": [
+    "Knee Injury",
+    "High Blood Pressure Issues",
+    "Neck Injury"
+  ],
+  "benefits": [
+    "It opens up your shoulders, lungs, and chest.",
+    "Low Lunge Pose helps you improve your balance.",
+    "Low Lunge Pose stimulates the digestive and reproductive organs.",
+    "If you practice this asana regularly, your body will be toned and energized."
+  ],
+  "created_at": "",
+  "updated_at": "",
+  "image_url": "",
+  "yt_videos": []
+},
     {
-      "id": 0,
-      "sanskrit_name": "",
-      "english_name": "",
-      "procedure": [],
-      "target_body_parts": [],
-      "contraindications": [],
-      "benefits": [],
-      "created_at": "",
-      "updated_at": "",
-      "image_url": "",
-      "yt_videos": []
-    },
-    {
-      "id": 0,
+      "id": 5,
       "sanskrit_name": "Navasana",
       "english_name": "Boat Pose",
       "procedure": [
@@ -46,7 +199,7 @@
       "yt_videos": []
     },
     {
-      "id": 1,
+      "id": 6,
       "sanskrit_name": "Ardha Navasana",
       "english_name": "Half-Boat Pose",
       "procedure": [
@@ -79,7 +232,7 @@
       "yt_videos": []
     },
     {
-      "id": 2,
+      "id": 7,
       "sanskrit_name": "Dhanurasana",
       "english_name": "Bow Pose",
       "procedure": [
@@ -126,7 +279,7 @@
       "yt_videos": []
     },
     {
-      "id": 3,
+      "id": 8,
       "sanskrit_name": "Setu Bandha Sarvangasana",
       "english_name": "Bridge Pose",
       "procedure": [
@@ -164,7 +317,7 @@
       "yt_videos": []
     },
     {
-      "id": 4,
+      "id": 9,
       "sanskrit_name": "Baddha Konasana",
       "english_name": "Butterfly Pose",
       "procedure": [
@@ -199,43 +352,7 @@
       "yt_videos": []
     },
     {
-      "id": 5,
-      "sanskrit_name": "Ustrasana",
-      "english_name": "Camel Pose",
-      "procedure": [
-        "First of all, kneel down on the floor.Keep your thighs and feet together.Toes should be pointing back and resting on the floor.",
-        "Bring the knees and the feet about one foot apart and stand on the knees.",
-        "Inhale, bend backward slowly.",
-        "Exhale; place the right palm on the right heel and left palm on the left heel.",
-        "The thighs should be vertical to the floor and the head tilted backward.The weight of the body should be evenly supported by the arms and legs.",
-        "Maintain the pose as long as you can.",
-        "Exhale and come to the original position slowly."
-      ],
-      "target_body_parts": [
-        "Back",
-        "Spine",
-        "Shoulders",
-        "Core",
-        "Abdominal Muscle"
-      ],
-      "benefits": [
-        "Improves digestion.Stretches and opens the front of the body. It also strengthens the back and shoulders.",
-        "Relieves the body of lower back ache.",
-        "Improves flexibility of the spine and also improves posture.",
-        "Helps overcome menstrual discomfort."
-      ],
-      "contraindications": [
-        "Back Injury",
-        "Neck Injury",
-        "Blood Pressure Issues"
-      ],
-      "created_at": "",
-      "updated_at": "",
-      "image_url": "https://www.dropbox.com/s/o5gr4lngltsdg5r/camel.svg?raw=1",
-      "yt_videos": []
-    },
-    {
-      "id": 6,
+      "id": 10,
       "sanskrit_name": "Marjaryasana-Bitilasana",
       "english_name": "Cat-Cow Pose",
       "procedure": [
@@ -261,7 +378,7 @@
       "yt_videos": []
     },
     {
-      "id": 7,
+      "id": 11,
       "sanskrit_name": "Utkatasana",
       "english_name": "Chair Pose",
       "procedure": [
@@ -291,38 +408,9 @@
       "image_url": "https://www.dropbox.com/s/9emlawz8vayk8bm/chair.svg?raw=1",
       "yt_videos": []
     },
+  
     {
-      "id": 8,
-      "sanskrit_name": "Balasana",
-      "english_name": "Child's Pose",
-      "procedure": [
-        "Sit on your knees on the yoga mats i.e. Vajrasana. In this case, rest your upper body on the thighs.",
-        "Keep both knees of your feet sticking to each other or at a short distance from each other and keep the waist perfectly straight.",
-        "Now take a deep breath and tilt the upper body towards the front such that chest may rest gently on the thighs.",
-        "Stretch your arms out in front with the palms facing the floor. You may also move the arms towards the back, with the palms facing upwards.",
-        "Stay in the post for a few minutes, and return to the initial sitting posture. Now, gradually open your eyes.",
-        "To get out of this easy, first, bring your palms under the shoulder and slowly raise your upper body and return to the Vajrasana.",
-        "In the end, rub your hands together and gently place them on your eyes and face to experience their warmth."
-      ],
-      "target_body_parts": ["Spine", "Back", "Hip", "Thighs", "Ankle"],
-      "benefits": [
-        "It stretches your lower back and relaxes the spine.",
-        "It strengthens and stretches your thighs, ankles and muscle of hips.",
-        "While doing Balasana yoga asana, there is pressure on your stomach and intestines which also enhances the digestive process."
-      ],
-      "contraindications": [
-        "Pregnancy",
-        "Spine Injury",
-        "Knee Injury",
-        "Blood Pressure Issues"
-      ],
-      "created_at": "",
-      "updated_at": "",
-      "image_url": "https://www.dropbox.com/s/ini3uwali0q5gxa/child.svg?raw=1",
-      "yt_videos": []
-    },
-    {
-      "id": 9,
+      "id": 12,
       "sanskrit_name": "Savasana",
       "english_name": "Corpse Pose",
       "procedure": [
@@ -348,7 +436,7 @@
       "yt_videos": []
     },
     {
-      "id": 10,
+      "id": 13,
       "sanskrit_name": "Bakasana",
       "english_name": "Crow Pose",
       "procedure": [
@@ -387,7 +475,7 @@
       "yt_videos": []
     },
     {
-      "id": 11,
+      "id": 14,
       "sanskrit_name": "Ardha Pincha Mayurasana",
       "english_name": "Dolphin Pose",
       "procedure": [
@@ -424,44 +512,9 @@
       "image_url": "https://www.dropbox.com/s/px1foombb3v24se/dolphin.svg?raw=1",
       "yt_videos": []
     },
+  
     {
-      "id": 12,
-      "sanskrit_name": "Adho Mukha Svanasana",
-      "english_name": "Downward-Facing Dog",
-      "procedure": [
-        "Come onto your fours. Form a table such that your back forms the tabletop and your hands and feet form the legs of the table.",
-        "As you exhale, lift the hips up, straightening the knees and elbows, forming an inverted V-shape with the body.",
-        "Hands are shoulder-width apart, feet are hip-width apart and parallel to each other. Toes point straight ahead.",
-        "Press your hands into the ground. Widen through the shoulder blades. Keep the neck lengthened by touching the ears to the inner arms.",
-        "Hold the downward dog pose and take long deep breaths. Look towards the navel.",
-        "Exhale. Bend the knees, return to table pose. Relax."
-      ],
-      "target_body_parts": [
-        "Upper Body",
-        "Shoulders",
-        "Neck",
-        "Arms",
-        "Legs",
-        "Spine"
-      ],
-      "benefits": [
-        "It energizes and rejuvenates the body.",
-        "It lengthens the spine, strengthens the muscles of the chest increasing lung capacity.",
-        "It brings strength throughout the body especially the arms, shoulders, legs, feet.",
-        "It increases circulation to the brain."
-      ],
-      "contraindications": [
-        "High Blood Pressure Issues",
-        "Weak Eye Capillaries",
-        "Shoulder Injury"
-      ],
-      "created_at": "",
-      "updated_at": "",
-      "image_url": "https://www.dropbox.com/s/75xa1bduu2u5y7d/downdog.svg?raw=1",
-      "yt_videos": []
-    },
-    {
-      "id": 13,
+      "id": 15,
       "sanskrit_name": "Garudasana",
       "english_name": "Eagle Pose",
       "procedure": [
@@ -487,7 +540,7 @@
       "yt_videos": []
     },
     {
-      "id": 14,
+      "id": 16,
       "sanskrit_name": "Utthita Hasta Padangusthasana",
       "english_name": "Extended Hand to Toe",
       "procedure": [
@@ -514,7 +567,7 @@
       "yt_videos": []
     },
     {
-      "id": 15,
+      "id": 17,
       "sanskrit_name": "Utthita Parsvakonasana",
       "english_name": "Extended Side Angle",
       "procedure": [
@@ -539,7 +592,7 @@
       "yt_videos": []
     },    
     {
-      "id": 16,
+      "id": 18,
       "sanskrit_name": "Pincha Mayurasana",
       "english_name": "Forearm Stand",
       "procedure": [
@@ -567,7 +620,7 @@
       "yt_videos": []
     },
     {
-      "id": 17,
+      "id": 19,
       "sanskrit_name": "Uttanasana",
       "english_name": "Forward Bend with Shoulder Opener",
       "procedure": [
@@ -623,7 +676,7 @@
       "yt_videos": []
     },
     {
-      "id": 19,
+      "id": 20,
       "sanskrit_name": "Adho Mukha Vrksasana",
       "english_name": "Handstand",
       "procedure": [
@@ -653,37 +706,7 @@
       "image_url": "",
       "yt_videos": []
     },
-    {
-      "id": 20,
-      "sanskrit_name": "Anjaneyasana",
-      "english_name": "Low Lunge",
-      "procedure": [
-        "First, stand in Tadasana. In this pose, your body is in a straight, aligned position.",
-        "Next, stretch your left leg back fully with the lower left leg (part of the left leg below the knee) touching the floor.",
-        "Bend your right leg at the knee and ensure the right foot is placed in front of the left foot. The legs should be placed at a distance that avoids wobbling legs.",
-        "Next, stretch your arms over your head in the namaskar position.",
-        "This asana depicts lord hanuman, the son of Anjani; hence it is called Anjaneyasana.",
-        "Breathe normally and hold this position for 3-5 minutes.",
-        "Breathe out and return to the original position.",
-        "Repeat the above steps with alternate legs."
-      ],
-      "target_body_parts": ["Glutes", "Legs", "Shoulders", "Core", "Lower Body"],
-      "contraindications": [
-        "Knee Injury",
-        "High Blood Pressure Issues",
-        "Neck Injury"
-      ],
-      "benefits": [
-        "It opens up your shoulders, lungs, and chest.",
-        "Low Lunge Pose helps you improve your balance.",
-        "Low Lunge Pose stimulates the digestive and reproductive organs.",
-        "If you practice this asana regularly, your body will be toned and energized."
-      ],
-      "created_at": "",
-      "updated_at": "",
-      "image_url": "",
-      "yt_videos": []
-    },
+  
     {
       "id": 21,
       "sanskrit_name": "Supta Kapotasana",
@@ -1189,36 +1212,7 @@
       "image_url": "",
       "yt_videos": []
     },
-    {
-      "id": 38,
-      "sanskrit_name": "Vrksasana",
-      "english_name": "Tree",
-      "procedure": [
-        "Take a moment to feel both your feet root into the floor, your weight distributed equally on all four corners of each foot.",
-        "Begin to shift your weight into your right foot, lifting your left foot off the floor. ",
-        "Keep your right leg straight but don't lock the knee.",
-        "Bend your left knee and bring the sole of your left foot high onto your inner right thigh. ",
-        "Press your foot into your thigh and your thigh back into your foot with equal pressure.This will help you keep both hips squared toward the front so your right hip doesn't jut out.",
-        "Focus your gaze (Drishti) on something that doesn't move to help you keep your balance",
-        "Take 5 to 10 breaths, then lower your left foot to the floor and do the other side."
-      ],
-      "target_body_parts": ["Entire Body", "Legs"],
-      "contraindications": ["Knee Injury", "Migraine headaches"],
-      "benefits": [
-        "Increases concentration",
-        "Improves physical balance and mental resilience ",
-        "Helps relieve sciatica",
-        "Strengthens the legs",
-        "Opens the hips",
-        "Boosts energy",
-        "Strengthens your core",
-        "Improves your posture and alignment"
-      ],
-      "created_at": "",
-      "updated_at": "",
-      "image_url": "",
-      "yt_videos": []
-    },
+   
     {
       "id": 39,
       "sanskrit_name": "Trikonasana",
