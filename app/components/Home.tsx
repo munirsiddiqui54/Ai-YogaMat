@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     // Load the JSON file from the assets folder
     let jsonData = require('../poses.json');
-    jsonData=jsonData.filter((pose) => pose.id !== 0);
+    jsonData=jsonData.filter((pose:any) => pose.id !== 0);
     setPoses(jsonData);
   }, []);
 
@@ -44,7 +44,7 @@ const Home = () => {
       {/* Yoga Poses Section */}
       <Text style={styles.posesHeader}>My Poses:</Text>
       <View style={styles.posesContainer}>
-      {poses.map(pose => (
+      {poses!.map((pose:any) => (
         <View key={pose.id} style={styles.poseContainer}>
           <Image source={{ uri: pose.image_url }} style={styles.poseImage} />
           <Text style={styles.poseText}>{pose.english_name}</Text>
@@ -60,7 +60,7 @@ const Home = () => {
   );
 };
 
-const Pose = ({ name }) => (
+const Pose = ({ name }:{name:any}) => (
   <View style={styles.poseContainer}>
     <Image 
       source={{ uri: 'https://example.com/pose-icon.png' }} 
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   trendingContainer: {
     marginBottom: 20,
-    position: 'relative',
+    position: 'relative', 
   },
   trendingImage: {
     width: '100%',
