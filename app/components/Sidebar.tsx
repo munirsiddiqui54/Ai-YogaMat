@@ -91,7 +91,7 @@ const Sidebar = () => {
 const navigationElements = [
   {
     title: "Home",
-    slug: "/home",
+    slug: "/",
     iconUrl: require("../../assets/images/icons/homeicon.png"),
   },
   {
