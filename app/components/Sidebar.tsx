@@ -28,6 +28,7 @@ const Sidebar = () => {
         {navigationElements.map((element, index) => {
           const isActive = currentRoute === element.slug; // Check if this button's route is active
           return (
+           
             <TouchableOpacity
               key={index}
               onPress={() => router.push(element.slug as Href<string | object>)}
@@ -40,6 +41,14 @@ const Sidebar = () => {
                     : styles.inactiveNavigationBtn, // Conditional styles
                 ]}
               >
+                    <Image
+            source={element.iconUrl}
+            style={[styles.icons,
+
+              isActive?styles.activeicon:styles.icons
+            ]}
+                />
+             
                 <Text
                   style={[
                     styles.navigationText,
@@ -83,27 +92,27 @@ const navigationElements = [
   {
     title: "Home",
     slug: "/home",
-    iconUrl: "",
+    iconUrl: require("../../assets/images/icons/homeicon.png"),
   },
   {
     title: "Recommendations",
     slug: "/recommendation",
-    iconUrl: "",
+    iconUrl: require("../../assets/images/icons/recommendations.png"),
   },
   {
     title: "Challenges",
     slug: "/challenges",
-    iconUrl: "",
+    iconUrl: require("../../assets/images/icons/challenge.png"),
   },
   {
     title: "Discover",
     slug: "/discover",
-    iconUrl: "",
+    iconUrl: require("../../assets/images/icons/discovericon.png"),
   },
   {
     title: "My Profile",
     slug: "/profile",
-    iconUrl: "",
+    iconUrl: require("../../assets/images/icons/profile.png"),
   },
   // Add more elements as needed
 ];
@@ -124,7 +133,7 @@ const styles = StyleSheet.create({
   container: {
     width: 200,
     padding: 10,
-    borderRadius:15,
+    borderRadius: 15,
     backgroundColor: "#ffffff65",
   },
   imageContainer: {
@@ -146,13 +155,24 @@ const styles = StyleSheet.create({
   navigationBtn: {
     height: 35,
     margin: 3,
-    marginHorizontal:2,
-
+    marginHorizontal: 2,
+    flexDirection: "row",
     backgroundColor: "#ffffff65",
     borderRadius: 50,
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    alignItems: "center", // Center items vertically within the button
     paddingHorizontal: 20,
   },
+  icons: {
+    width: 20,
+    height: 20, // Ensure the icon size is consistent
+    marginRight: 10, // Add margin to the right to separate the icon from the text
+    resizeMode: "contain",
+  },
+  activeicon:{
+     tintColor:'white',
+  },
+
   activeNavigationBtn: {
     backgroundColor: "#4E3B7A", // Active background color
   },
@@ -175,7 +195,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     marginTop: 10, // Adjust margin to avoid extra space
-    flex: 1,
+    paddingBottom: 90,
   },
   deviceText: {
     color: "#4E3B7A",
@@ -191,7 +211,7 @@ const styles = StyleSheet.create({
   deviceItem: {
     marginVertical: 5,
     padding: 10,
-    backgroundColor: "#fff",
+    backgroundColor: "#F2EDFF",
     borderRadius: 10,
     borderColor: "#ddd",
     borderWidth: 1,
@@ -201,17 +221,18 @@ const styles = StyleSheet.create({
   },
   deviceName: {
     flex: 1,
-    fontSize:12,
-    fontFamily:'Open-Sans'
+    fontSize: 12,
+    fontFamily: "Open-Sans",
   },
   deviceStatus: {
     flex: 1,
-    fontSize:10,
+    fontSize: 10,
     textAlign: "right",
   },
   devicesContainer: {
     paddingTop: 10,
   },
 });
+
 
 export default Sidebar;
