@@ -1,26 +1,52 @@
-
-import { useLocalSearchParams } from 'expo-router'
 import { useFonts } from 'expo-font';
 import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, Switch } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const poses=require('../poses.json');
+
+const O={
+    "id": 4,
+    "sanskrit_name": "Anjaneyasana",
+    "english_name": "Low Lunge",
+    "procedure": [
+      "First, stand in Tadasana. In this pose, your body is in a straight, aligned position.",
+      "Next, stretch your left leg back fully with the lower left leg (part of the left leg below the knee) touching the floor.",
+      "Bend your right leg at the knee and ensure the right foot is placed in front of the left foot. The legs should be placed at a distance that avoids wobbling legs.",
+      "Next, stretch your arms over your head in the namaskar position.",
+      "This asana depicts lord hanuman, the son of Anjani; hence it is called Anjaneyasana.",
+      "Breathe normally and hold this position for 3-5 minutes.",
+      "Breathe out and return to the original position.",
+      "Repeat the above steps with alternate legs."
+    ],
+    "target_body_parts": ["Glutes", "Legs", "Shoulders", "Core", "Lower Body"],
+    "contraindications": [
+      "Knee Injury",
+      "High Blood Pressure Issues",
+      "Neck Injury"
+    ],
+    "benefits": [
+      "It opens up your shoulders, lungs, and chest.",
+      "Low Lunge Pose helps you improve your balance.",
+      "Low Lunge Pose stimulates the digestive and reproductive organs.",
+      "If you practice this asana regularly, your body will be toned and energized."
+    ],
+    "created_at": "",
+    "updated_at": "",
+    "image_url": require("../assets/images/poses/004.png"),
+    "yt_videos": []
+  }
 const App = () => {
-  
-  const {id} = useLocalSearchParams()
-  const O=poses[Number(id)]
+
     const [fontsLoaded] = useFonts({
-        'nexa-xl': require('../../assets/fonts/Nexa-ExtraLight.ttf'),
-        'nexa': require('../../assets/fonts/Nexa-Heavy.ttf'),
-        'open-v': require('../../assets/fonts/openvar.ttf'),
+        'nexa-xl': require('../assets/fonts/Nexa-ExtraLight.ttf'),
+        'nexa': require('../assets/fonts/Nexa-Heavy.ttf'),
+        'open-v': require('../assets/fonts/openvar.ttf'),
       });
   const [isEnabled, setIsEnabled] = React.useState(false);
 
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   return (
-   
     <ScrollView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -48,7 +74,7 @@ const App = () => {
 
       {/* Description */}
       <View style={styles.descriptionContainer}>
-        {O.procedure.map((i:any)=>
+        {O.procedure.map(i=>
         <Text style={styles.description}>
         {i}
         </Text>

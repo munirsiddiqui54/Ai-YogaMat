@@ -54,7 +54,7 @@ const Home = () => {
       <Text style={styles.posesHeader}>My Poses:</Text>
       <View style={styles.posesContainer}>
       {poses.map((pose:any) => (
-        <Pressable onPress={()=>router.push(`/exercise/${JSON.stringify(pose)}`)}><View key={pose.id} style={styles.poseContainer}>
+        <Pressable onPress={()=>router.push(`/exercise/${JSON.stringify(pose.id)}`)}><View key={pose.id} style={styles.poseContainer}>
           {pose.id==0&&console.log(pose)}
         <Image source={imageMapping[pose.id]} style={styles.poseImage} />
         <Text style={styles.poseText}>{pose.english_name}</Text>
