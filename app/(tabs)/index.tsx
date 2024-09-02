@@ -11,7 +11,7 @@ const backgd = require('../../assets/images/backgd.jpeg');
 
 const App = () => {
   const [fontsLoaded] = useFonts({
-    "Open-Sans": require("../../assets/fonts/OpenSans-VariableFont_wdth,wght.ttf"),
+    "Open-Sans": require("../../assets/fonts/openvar.ttf"),
   });
 
   if (!fontsLoaded) {

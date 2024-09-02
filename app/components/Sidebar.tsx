@@ -1,10 +1,17 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { Href, router, usePathname } from "expo-router";
+import { useFonts } from "expo-font";
 
 const Sidebar = () => {
   const currentRoute = usePathname(); // Get the current route
+  const [fontsLoaded] = useFonts({
+    "open-v": require("../../assets/fonts/openvar.ttf"),
+  });
 
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -115,10 +122,9 @@ const pairedDevices = [
 
 const styles = StyleSheet.create({
   container: {
-    width: 280,
+    width: 200,
     padding: 10,
     borderRadius:15,
-    margin:20,
     backgroundColor: "#ffffff65",
   },
   imageContainer: {
@@ -130,8 +136,8 @@ const styles = StyleSheet.create({
     marginBottom: 10, // Adjust this if needed
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 70,
+    height: 70,
     resizeMode: "contain",
   },
   navigation: {
@@ -140,7 +146,7 @@ const styles = StyleSheet.create({
   navigationBtn: {
     height: 35,
     margin: 3,
-    marginHorizontal:10,
+    marginHorizontal:2,
 
     backgroundColor: "#ffffff65",
     borderRadius: 50,
@@ -154,7 +160,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff20", // Inactive background color
   },
   navigationText: {
-    fontSize: 20,
+    fontSize: 14,
     fontFamily: "Open-Sans",
     fontWeight: "semibold",
   },
@@ -195,9 +201,12 @@ const styles = StyleSheet.create({
   },
   deviceName: {
     flex: 1,
+    fontSize:12,
+    fontFamily:'Open-Sans'
   },
   deviceStatus: {
     flex: 1,
+    fontSize:10,
     textAlign: "right",
   },
   devicesContainer: {

@@ -37,7 +37,7 @@ const Home = () => {
       </View>
 
       {/* Date Section */}
-      <Text style={styles.dateText}>Monday 19 August</Text>
+      <Text style={styles.dateText}>Wednesday 19 August</Text>
 
       {/* Health Overview Section */}
       <View style={styles.healthOverviewContainer}>
@@ -52,7 +52,7 @@ const Home = () => {
       {/* Yoga Poses Section */}
       <Text style={styles.posesHeader}>My Poses:</Text>
       <View style={styles.posesContainer}>
-      {poses.map(pose => (
+      {poses.map((pose:any) => (
         <View key={pose.id} style={styles.poseContainer}>
           <Image source={imageMapping[pose.id]} style={styles.poseImage} />
           <Text style={styles.poseText}>{pose.english_name}</Text>
