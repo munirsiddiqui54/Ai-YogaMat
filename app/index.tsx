@@ -2,11 +2,14 @@ import { View, Text } from 'react-native';
 import { StyleSheet, ImageBackground } from 'react-native';
 import Sidebar from './components/Sidebar';
 import Home from './components/Home';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const backgd = require('../assets/images/backgd.jpeg');
 
 const home= () => {
   return (
+
+    <GestureHandlerRootView style={{ flex: 1 }}>
     <ImageBackground source={backgd} style={styles.backgroundImage}>
       {/* Overlay to make the background image dull */}
       <View style={styles.overlay} />
@@ -17,6 +20,7 @@ const home= () => {
         <Home/>
       </View>
     </ImageBackground>
+  </GestureHandlerRootView>
   );
 }
 

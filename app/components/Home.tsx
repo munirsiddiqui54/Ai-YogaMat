@@ -4,6 +4,7 @@ import { useFonts } from 'expo-font';
 import { router } from 'expo-router';
 
 const poster=require('../../assets/images/homeposter.png')
+
 const imageMapping = {
   0: require('../../assets/images/poses/000.png'),
   1: require('../../assets/images/poses/001.png'),
@@ -76,7 +77,7 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F8F8',
+    backgroundColor: '#ffffff',
     paddingHorizontal: 20,
     borderRadius: 20,
     marginTop:15,
@@ -121,15 +122,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   poseContainer: {
-    backgroundColor: '#FFF',
     padding: 10,
+    width:180,
     marginBottom: 20,
     borderRadius: 10,
-    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5,
   },
   poseImage: {
     width: 200,

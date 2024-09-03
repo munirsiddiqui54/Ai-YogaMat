@@ -1,14 +1,24 @@
 
-import { useLocalSearchParams } from 'expo-router'
+import { router, useLocalSearchParams } from 'expo-router'
 import { useFonts } from 'expo-font';
 import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, Switch } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import { StyleSheet, Text, View, Image, ScrollView, Switch, TouchableOpacity, Pressable } from 'react-native';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
+const img = {
+  0: require('../../assets/images/poses/000.png'),
+  1: require('../../assets/images/poses/001.png'),
+  2: require('../../assets/images/poses/002.png'),
+  3: require('../../assets/images/poses/003.png'),
+  4: require('../../assets/images/poses/004.png'),
+};
 const poses=require('../poses.json');
 const App = () => {
   
   const {id} = useLocalSearchParams()
+  const x=Number(id)
+  const handlePress=()=>{
+    router.push(`/activity/${JSON.stringify(x)}`)
+  }
   const O=poses[Number(id)]
     const [fontsLoaded] = useFonts({
         'nexa-xl': require('../../assets/fonts/Nexa-ExtraLight.ttf'),
@@ -27,7 +37,7 @@ const App = () => {
         <Text style={styles.title}>{O.english_name}</Text>
 
 
-        <View style={styles.deviceItem}>
+              <View style={styles.deviceItem}>
                 <Text style={styles.deviceName}>Quba 02 </Text>
                 <Text style={styles.deviceStatus}>
                    Connected
@@ -43,7 +53,7 @@ const App = () => {
 
       {/* Image */}
       <View style={styles.imageContainer}>
-        <Image source={O.image_url} style={styles.image} />
+        <Image source={img[x]} style={styles.image} />
       </View>
 
       {/* Description */}
@@ -54,10 +64,14 @@ const App = () => {
         </Text>
         )}
       </View>
-
+{/* 
       <TouchableOpacity style={styles.tryNowButton} >
         <Text style={styles.tryNowButtonText}>Try Now</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+
+<Pressable style={styles.tryNowButton} onPress={handlePress}>
+          <Text style={styles.tryNowButtonText}>Try Now</Text>
+        </Pressable>
 
       {/* Benefits and Contradictions */}
       <View style={styles.infoContainer}>
@@ -102,9 +116,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    flexDirection:'row',
+    justifyContent:'space-between',
     marginBottom: 20,
   },
   title: {
@@ -118,8 +132,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 450,
+    height: 450,
   },
   descriptionContainer: {
     marginBottom: 20,
@@ -195,14 +209,13 @@ benefitsText: {
     fontSize: 16,
   },
   deviceItem: {
-    marginVertical: 5,
     padding: 10,
     backgroundColor: "#F2EDFF",
     borderRadius: 10,
+    width:200,
     borderColor: "#ddd",
     borderWidth: 1,
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
   },
   deviceName: {
