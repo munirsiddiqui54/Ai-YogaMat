@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from 'expo-router';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, Switch } from 'react-native';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { Svg, Rect } from 'react-native-svg';
@@ -11,6 +11,62 @@ const LandscapeScreen = () => {
 
   const {id} = useLocalSearchParams()
   const x=id
+  const [userArray, setUserArray] = useState([]);
+  const [yogaMasterArray, setYogaMasterArray] = useState([]);
+
+  const generateRandomArray = () => {
+    return Array.from({ length: 12 }, () => Math.floor(Math.random() * 2));
+  };
+
+  useEffect(() => {
+    // Set initial random arrays
+    setUserArray(generateRandomArray());
+    setYogaMasterArray(generateRandomArray());
+
+    // Update arrays every 2 seconds
+    const intervalId = setInterval(() => {
+      setUserArray(generateRandomArray());
+      setYogaMasterArray(generateRandomArray());
+    }, 2000);
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
+
+
+  
+const updateSvg = (user = [], yogaMaster = []) => {
+    const bydefault = "black";
+    const useractive = "red";
+    const correct = "green";
+  
+    const getColor = (index) => {
+      if (user[index] === 1 && yogaMaster[index] === 1) {
+        return correct;
+      } else if (user[index] === 1) {
+        return useractive;
+      } else {
+        return bydefault;
+      }
+    };
+  
+    return (
+      <Svg width="318" height="650" viewBox="0 0 318 740">
+        <Rect x="0" y="0.717" width="133.664" height="124.828" rx="12" fill={getColor(0)} fillOpacity="0.4"/>
+        <Rect y="136.665" width="134.462" height="62.0553" rx="12" fill={getColor(1)} fillOpacity="0.5"/>
+        <Rect x="181.942" y="136.665" width="133.664" height="62.0553" rx="12" fill={getColor(2)} fillOpacity="0.5"/>
+        <Rect y="531.595" width="133.664" height="62.0553" rx="12" fill={getColor(3)} fillOpacity="0.5"/>
+        <Rect x="181.144" y="531.595" width="133.664" height="62.0553" rx="12" fill={getColor(4)} fillOpacity="0.5"/>
+        <Rect y="209.123" width="134.462" height="151.013" rx="12" fill={getColor(5)} fillOpacity="0.5"/>
+        <Rect x="181.942" y="209.123" width="133.664" height="151.013" rx="12" fill={getColor(6)} fillOpacity="0.7"/>
+        <Rect y="370.538" width="133.664" height="151.013" rx="12" fill={getColor(7)} fillOpacity="0.5"/>
+        <Rect x="181.144" y="370.538" width="133.664" height="151.013" rx="12" fill={getColor(8)} fillOpacity="0.5"/>
+        <Rect x="181.144" width="133.664" height="126.263" rx="12" fill={getColor(9)} fillOpacity="0.5"/>
+        <Rect x="1.59595" y="615.172" width="133.664" height="124.828" rx="12" fill={getColor(10)} fillOpacity="0.5"/>
+        <Rect x="183.938" y="613.738" width="134.063" height="126.263" rx="12" fill={getColor(11)} fillOpacity="0.5"/>
+      </Svg>
+    );
+  };
   
 useEffect(() => {
     ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
@@ -62,20 +118,7 @@ useEffect(() => {
     </View>
     </View>
     <View style={styles.matContainer}>
-      <Svg width="318" height="650" viewBox="0 0 318 740">
-        <Rect x="0" y="0.717" width="133.664" height="124.828" rx="12" fill="#33FF00" fillOpacity="0.4"/>
-        <Rect y="136.665" width="134.462" height="62.0553" rx="12" fill="black" fillOpacity="0.5"/>
-        <Rect x="181.942" y="136.665" width="133.664" height="62.0553" rx="12" fill="black" fillOpacity="0.5"/>
-        <Rect y="531.595" width="133.664" height="62.0553" rx="12" fill="black" fillOpacity="0.5"/>
-        <Rect x="181.144" y="531.595" width="133.664" height="62.0553" rx="12" fill="black" fillOpacity="0.5"/>
-        <Rect y="209.123" width="134.462" height="151.013" rx="12" fill="black" fillOpacity="0.5"/>
-        <Rect x="181.942" y="209.123" width="133.664" height="151.013" rx="12" fill="#EB5E5E" fillOpacity="0.7"/>
-        <Rect y="370.538" width="133.664" height="151.013" rx="12" fill="black" fillOpacity="0.5"/>
-        <Rect x="181.144" y="370.538" width="133.664" height="151.013" rx="12" fill="black" fillOpacity="0.5"/>
-        <Rect x="181.144" width="133.664" height="126.263" rx="12" fill="black" fillOpacity="0.5"/>
-        <Rect x="1.59595" y="615.172" width="133.664" height="124.828" rx="12" fill="black" fillOpacity="0.5"/>
-        <Rect x="183.938" y="613.738" width="134.063" height="126.263" rx="12" fill="black" fillOpacity="0.5"/>
-      </Svg>
+      {updateSvg(userArray,yogaMasterArray)}
     </View>
 
     </View>
