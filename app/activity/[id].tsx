@@ -8,6 +8,83 @@ import YoutubeIframe from 'react-native-youtube-iframe';
 const poses=require('../poses.json');
 
 const LandscapeScreen = () => {
+
+  let socket: WebSocket | null = null;
+  const [rawData, setRawData] = useState<number[]>([]);
+  const [processedData, setProcessedData] = useState<number[]>([]);
+
+  //Function to connect sockets
+  const connectSocket = (url: string): void => {
+    socket = new WebSocket(url);
+
+    socket.onopen = () => {
+      console.log('Connected to the WebSocket server');
+      socket?.send(JSON.stringify({ type: "connect", ymid: "123456" }));
+    };
+
+    socket.onclose = () => {
+      console.log('Disconnected from the WebSocket server');
+    };
+
+    socket.onerror = (error: Event) => {
+      console.error('WebSocket error:', error);
+    };
+
+    socket.onmessage = (event: MessageEvent) => {
+      const data = JSON.parse(event.data);
+      console.log('Received data:', data);
+      if (data.type === 'FilteredData' && Array.isArray(data.values)) {
+        console.log(rawData);
+        setRawData(data.values); // Store raw data
+        setProcessedData(processGradientData(data.values)); // Process and store processed data using gradient algorithm
+      }
+    };
+  };
+
+  const disconnectSocket = (): void => {
+    if (socket) {
+      socket.close();
+      console.log('Socket disconnected');
+    }
+  };
+
+  //Calling of sockets on mount
+  useEffect(() => {
+    const url = 'wss://aura-mat.athrva.in'; // Replace with your WebSocket server URL
+    connectSocket(url);
+
+    return () => {
+      disconnectSocket();
+    };
+  }, []);
+
+
+  //Function to convert from inconsistent intensities into 0s and 1s
+  const processGradientData = (values: number[]) => {
+    
+    if (values.length < 2) return values.map(() => 0); // If less than 2 values, return all zeros
+  
+    // Calculate gradients
+    const gradients = values.map((value, index) => {
+      if (index === 0 || index === values.length - 1) {
+        // For first and last elements, consider the next and previous element difference only
+        return index === 0 ? Math.abs(value - values[index + 1]) : Math.abs(value - values[index - 1]);
+      }
+      // Calculate the average difference with the neighboring elements
+      return (Math.abs(value - values[index - 1]) + Math.abs(value - values[index + 1])) / 2;
+    });
+  
+    // Find the average gradient
+    const avgGradient = gradients.reduce((sum, g) => sum + g, 0) / gradients.length;
+  
+    // Threshold is considered as a factor of the average gradient; adjust as needed
+    const thresholdFactor = 0.7; // Adjust the threshold factor to fine-tune sensitivity
+    const threshold = avgGradient * thresholdFactor;
+  
+    // Process values based on threshold
+    return values.map((value, index) => (gradients[index] > threshold ? 1 : 0));
+  };
+  
   const [isEnabled, setIsEnabled] = React.useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -18,7 +95,7 @@ const LandscapeScreen = () => {
   const [userArray, setUserArray] = useState([]);
   const [yogaMasterArray, setYogaMasterArray] = useState([]);
 
-  const generateRandomArray = () => {
+  const generateRandomArray:any = () => {
     return Array.from({ length: 12 }, () => Math.floor(Math.random() * 2));
   };
 
@@ -65,13 +142,12 @@ const LandscapeScreen = () => {
   };
 
   
-const updateSvg = (user = [], yogaMaster = []) => {
-  
+const updateSvg :any= (user = [], yogaMaster = []) => {
     const bydefault = "black";
     const useractive = "red";
     const correct = "green";
   
-    const getColor = (index) => {
+    const getColor = (index:any) => {
       if (user[index] === 1 && yogaMaster[index] === 1) {
         return correct;
       } else if (user[index] === 1) {
@@ -175,7 +251,7 @@ useEffect(() => {
     
     </View>
     <View style={styles.matContainer}>
-      {updateSvg(userArray,yogaMasterArray)}
+      {updateSvg(processedData,yogaMasterArray)}
     </View>
 
 
