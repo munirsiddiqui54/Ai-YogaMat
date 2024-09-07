@@ -1,11 +1,57 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { useFonts } from 'expo-font';
 
 const progressCircle= require('../../assets/images/Ellipse 9.png');
 const profilePic=require('../../assets/images/Ellipse 8.png');
 
+import { getDatabase, ref,child, set, get,push, onValue } from "firebase/database";
+import database from '@/datab/firebase';
+
+
 const Profile = () => {
+  const [user,setUser]=useState();
+  const [health,setHealthData]=useState()
+const getUserData = async (database, userId) => {
+  try {
+    // Create a reference to the user's data using their unique ID
+    const dbRef = ref(database);
+    const snapshot = await get(child(dbRef, `users/${userId}`));
+
+    if (snapshot.exists()) {
+      const userData = snapshot.val();
+      console.log("User Data:", userData.age);
+      setUser(userData)
+      return userData;
+    } else {
+      console.log("No data available for the provided user ID.");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
+};
+
+const userId="-O6BfwzkyKxfpb6elPwl"
+useEffect(() => {
+  getUserData(database,userId)
+
+  const userRef = ref(database, `users/${userId}/health`);
+
+  // Set up a real-time listener
+  const unsubscribe = onValue(userRef, (snapshot) => {
+    if (snapshot.exists()) {
+      setHealthData(snapshot.val());
+    } else {
+      setHealthData(null);
+    }
+  });
+
+  // Clean up the listener when the component unmounts
+  return () => unsubscribe();
+}, [userId]);
+
+  
   const [fontsLoaded] = useFonts({
     'nexa-xl': require('../../assets/fonts/Nexa-ExtraLight.ttf'),
     'nexa': require('../../assets/fonts/Nexa-Heavy.ttf'),
@@ -21,20 +67,39 @@ const Profile = () => {
       <View style={styles.profileHeader}>
         <Image source={profilePic} style={styles.profileImage} />
         <View style={styles.profileInfo}>
-          <Text style={styles.name}>Harshal Nelge</Text>
-          <Text style={styles.username}>Username_123</Text>
-          <Text style={styles.bio}>Bio :</Text>
+          {user==null?
+          <>
+          <Text style={styles.name}>Name</Text>
+          <Text style={styles.username}>username</Text>
+          <Text style={styles.bio}>Bio:</Text>
           <View style={styles.personalStats}>
-            <Text style={styles.statText}>Age : 20</Text>
-            <Text style={styles.statText}>Weight : 62kg</Text>
-            <Text style={styles.statText}>Height : 168cm</Text>
+            <Text style={styles.statText}>Age : </Text>
+            <Text style={styles.statText}>Weight : </Text>
+            <Text style={styles.statText}>Height : </Text>
           </View>
+</>
+          :
+          <>
+          <Text style={styles.name}>{user.name}</Text>
+          <Text style={styles.username}>{user.email}</Text>
+          <Text style={styles.bio}>Bio: {user.bio}</Text>
+          <View style={styles.personalStats}>
+            <Text style={styles.statText}>Age :{user.age} </Text>
+            <Text style={styles.statText}>Weight :{user.weight} </Text>
+            <Text style={styles.statText}>Height : {user.height}</Text>
+          </View>
+        </>
+          }
         </View>
       </View>
 
       <View style={styles.healthOverview}>
         <Text style={styles.healthHeader}>Health Overview</Text>
-        <Text style={styles.healthText}>Blood Pressure : 200 bpm</Text>
+        <Text style={styles.healthText}>Blood Pressure :
+           <Text style={styles.red}>
+            {health?health.bp:"null"}  
+            </Text>
+            bpm</Text>
         <Text style={styles.healthText}>Oxygen : 95%</Text>
         <Text style={styles.healthText}>Calories Burned : 200Kcal / 300Kcal</Text>
       </View>
@@ -87,6 +152,9 @@ const styles = StyleSheet.create({
     fontFamily: 'open',
     fontSize: 14,
     color: 'grey',
+  },
+  red:{
+    color:'red'
   },
   personalStats: {
     flexDirection: 'row',
