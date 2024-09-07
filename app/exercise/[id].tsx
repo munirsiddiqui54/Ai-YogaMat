@@ -1,109 +1,101 @@
-
-import { router, useLocalSearchParams } from 'expo-router'
+import { router, useLocalSearchParams } from 'expo-router';
 import { useFonts } from 'expo-font';
-import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, Switch, TouchableOpacity, Pressable } from 'react-native';
-// import { TouchableOpacity } from 'react-native-gesture-handler';
-const img = {
-  0: require('../../assets/images/poses/000.png'),
-  1: require('../../assets/images/poses/001.png'),
-  2: require('../../assets/images/poses/002.png'),
-  3: require('../../assets/images/poses/003.png'),
-  4: require('../../assets/images/poses/004.png'),
-};
-const poses=require('../poses.json');
-const App = () => {
-  
-  const {id} = useLocalSearchParams()
-  const x=Number(id)
-  const handlePress=()=>{
-    router.push(`/activity/${JSON.stringify(x)}`)
-  }
-  const O=poses[Number(id)]
-    const [fontsLoaded] = useFonts({
-        'nexa-xl': require('../../assets/fonts/Nexa-ExtraLight.ttf'),
-        'nexa': require('../../assets/fonts/Nexa-Heavy.ttf'),
-        'open-v': require('../../assets/fonts/openvar.ttf'),
-      });
-  const [isEnabled, setIsEnabled] = React.useState(false);
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Pressable } from 'react-native';
+import * as Speech from 'expo-speech';
 
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+const poses = require('../poses.json');
+
+const App = () => {
+  const { id } = useLocalSearchParams();
+  const x = Number(id);
+
+  
+
+  const handlePress = () => {
+    console.log("id", id);
+    console.log("x", x);
+    Speech.stop()
+    router.push(`/activity/${id}`);
+  };
+
+  const O = poses[x];
+
+  const [fontsLoaded] = useFonts({
+    'nexa-xl': require('../../assets/fonts/Nexa-ExtraLight.ttf'),
+    'nexa': require('../../assets/fonts/Nexa-Heavy.ttf'),
+    'open-v': require('../../assets/fonts/openvar.ttf'),
+  });
+
+  const speak = () => {
+    Speech.speak(O.about);
+  };
+
+  useEffect(() => {
+    speak()
+    // Cleanup function to stop speech when component unmounts or route changes
+    // return () => {
+    //   Speech.stop();
+    // };
+  }, []);
 
   return (
-   
     <ScrollView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>{O.english_name}</Text>
-
-
-              <View style={styles.deviceItem}>
-                <Text style={styles.deviceName}>Quba 02 </Text>
-                <Text style={styles.deviceStatus}>
-                   Connected
-                </Text>
-              </View>
-        {/* <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-          onValueChange={toggleSwitch}
-          value={isEnabled}
-        /> */}
+        <View style={styles.deviceItem}>
+          <Text style={styles.deviceName}>Quba 02</Text>
+          <Text style={styles.deviceStatus}>Connected</Text>
+        </View>
       </View>
 
       {/* Image */}
       <View style={styles.imageContainer}>
-        <Image source={img[x]} style={styles.image} />
+        <Image source={{ uri: O.image_url }} style={styles.image} />
       </View>
 
       {/* Description */}
       <View style={styles.descriptionContainer}>
-        {O.procedure.map((i:any)=>
-        <Text style={styles.description}>
-        {i}
-        </Text>
-        )}
-      </View>
-{/* 
-      <TouchableOpacity style={styles.tryNowButton} >
-        <Text style={styles.tryNowButtonText}>Try Now</Text>
-      </TouchableOpacity> */}
-
-<Pressable style={styles.tryNowButton} onPress={handlePress}>
-          <Text style={styles.tryNowButtonText}>Try Now</Text>
+        <Text>{O.about}</Text>
+        <Pressable style={styles.speakButton} onPress={speak}>
+          <Text style={styles.speakButtonText}>Speak Description</Text>
         </Pressable>
+      </View>
+
+      {/* Try Now Button */}
+      <Pressable style={styles.tryNowButton} onPress={handlePress}>
+        <Text style={styles.tryNowButtonText}>Try Now</Text>
+      </Pressable>
 
       {/* Benefits and Contradictions */}
       <View style={styles.infoContainer}>
         <View style={styles.benefitsContainer}>
           <Text style={styles.benefitsTitle}>Benefits</Text>
-         {O.benefits.map(i=>
-             <Text style={styles.benefitsText}>
-           - {i}
-           </Text>
-         )}
+          {O.benefits.map((i, index) => (
+            <Text key={index} style={styles.benefitsText}>- {i}</Text>
+          ))}
         </View>
         <View style={styles.contradictionsContainer}>
           <Text style={styles.contradictionsTitle}>Contraindications</Text>
-          {O.contraindications.map(i=>
-            <Text style={styles.contradictionsText}>
-           - {i}
-          </Text>
-          )}
+          {O.contraindications.map((i, index) => (
+            <Text key={index} style={styles.contradictionsText}>- {i}</Text>
+          ))}
         </View>
       </View>
 
       {/* Footer */}
       <View style={styles.footer}>
         <Text style={styles.footerText}>Similar:</Text>
-        {/* You can map over an array of similar poses here */}
-        <View style={styles.similarPose}>
-          <Text style={styles.poseText}>Camel Pose</Text>
-        </View>
-        <View style={styles.similarPose}>
-          <Text style={styles.poseText}>Child Pose</Text>
-        </View>
-        {/* More similar poses */}
+        <ScrollView horizontal>
+          {poses.filter(pose => pose.id != id).map((pose) => (
+            <View key={pose.id} style={styles.poseContainer}>
+              <Image source={{ uri: pose.image_url }} style={styles.poseImage} />
+              <Text style={styles.poseText}>{pose.english_name}</Text>
+              <Text style={styles.poseSubText}>{pose.sanskrit_name}</Text>
+            </View>
+          ))}
+        </ScrollView>
       </View>
     </ScrollView>
   );
@@ -115,11 +107,45 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#ffffff',
   },
+  toflex:{
+flexDirection:'row'
+  },
   header: {
     alignItems: 'center',
     flexDirection:'row',
     justifyContent:'space-between',
     marginBottom: 20,
+  },
+  
+  poseContainer: {
+    padding: 10,
+    width:180,
+    marginBottom: 20,
+    borderRadius: 10,
+    shadowOffset: { width: 0, height: 2 },
+  },
+  poseImage: {
+    width: 200,
+    height: 150,
+    resizeMode: 'contain',
+    marginBottom: 10,
+  },
+  poseText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontFamily: 'nexa',
+    marginBottom: 5,
+  },
+  poseSubText: {
+    fontSize: 16,
+    color: '#555',
+    fontFamily: 'nexa',
+    marginBottom: 10,
+  },
+  poseDetailText: {
+    fontSize: 14,
+    color: '#777',
+    marginBottom: 5,
   },
   title: {
     color:'#6a1b9a',
@@ -201,9 +227,9 @@ benefitsText: {
   },
   similarPose: {
     backgroundColor: '#ddd',
-    padding: 10,
+    padding: 50,
     borderRadius: 5,
-    marginBottom: 10,
+    marginBottom: 30,
   },
   poseText: {
     fontSize: 16,

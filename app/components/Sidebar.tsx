@@ -1,10 +1,14 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Href, router, usePathname } from "expo-router";
 import { useFonts } from "expo-font";
+import { useWindowDimensions } from "react-native";
 
 const Sidebar = () => {
+  const [isSidebarOpen, setSidebarOpen] = useState(false); // State to handle sidebar toggle
   const currentRoute = usePathname(); // Get the current route
+  const { width } = useWindowDimensions(); // Get the screen width
+
   const [fontsLoaded] = useFonts({
     "open-v": require("../../assets/fonts/openvar.ttf"),
   });
@@ -12,81 +16,116 @@ const Sidebar = () => {
   if (!fontsLoaded) {
     return null;
   }
-  return (
-    <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          source={require("../../assets/images/aura.png")}
-        />
-        <Image
-          style={styles.image}
-          source={require("../../assets/images/auraName.png")}
-        />
-      </View>
-      <View style={styles.navigation}>
-        {navigationElements.map((element, index) => {
-          const isActive = currentRoute === element.slug; // Check if this button's route is active
-          return (
-           
-            <TouchableOpacity
-              key={index}
-              onPress={() => router.push(element.slug as Href<string | object>)}
-            >
-              <View
-                style={[
-                  styles.navigationBtn,
-                  isActive
-                    ? styles.activeNavigationBtn
-                    : styles.inactiveNavigationBtn, // Conditional styles
-                ]}
-              >
-                    <Image
-            source={element.iconUrl}
-            style={[styles.icons,
 
-              isActive?styles.activeicon:styles.icons
-            ]}
-                />
-             
-                <Text
-                  style={[
-                    styles.navigationText,
-                    isActive
-                      ? styles.activeNavigationText
-                      : styles.inactiveNavigationText, // Conditional text styles
-                  ]}
-                >
-                  {element.title}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
-      <View style={styles.devices}>
-        <View>
-          <Text style={styles.deviceText}>Devices</Text>
-          <View style={styles.line}></View>
-        </View>
-        <View style={styles.devicesContainer}>
-          {pairedDevices.length > 0 ? (
-            pairedDevices.map((device, index) => (
-              <View key={index} style={styles.deviceItem}>
-                <Text style={styles.deviceName}>{device.deviceName}</Text>
-                <Text style={styles.deviceStatus}>
-                  {device.status ? "Connected" : "Disconnected"}
-                </Text>
-              </View>
-            ))
-          ) : (
-            <Text>No paired devices</Text>
+  // Determine if it's a mobile device based on width
+  const isMobile = width < 768;
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
+  return (
+    <>
+      {isMobile ? (
+    <View style={styles.containermobile}>
+          <TouchableOpacity
+            style={styles.toggleButton}
+            onPress={toggleSidebar}
+          >
+            <Text style={styles.toggleButtonText}>☰</Text>
+          </TouchableOpacity>
+          {isSidebarOpen && (
+            <View style={styles.sidebarContent}>
+              {renderSidebarContent(currentRoute)}
+            </View>
           )}
-        </View>
-      </View>
     </View>
+      ) : (
+        <View style={styles.container}>
+
+        <View style={styles.sidebarContent}>
+          {renderSidebarContent(currentRoute)}
+        </View>
+        </View>
+      )}
+    </>
   );
 };
+
+const renderSidebarContent = (currentRoute) => (
+  <>
+    <View style={styles.imageContainer}>
+      <Image
+        style={styles.image}
+        source={require("../../assets/images/aura.png")}
+      />
+      <Image
+        style={styles.image}
+        source={require("../../assets/images/auraName.png")}
+      />
+    </View>
+    <View style={styles.navigation}>
+      {navigationElements.map((element, index) => {
+        const isActive = currentRoute === element.slug; // Check if this button's route is active
+        return (
+          <TouchableOpacity
+            key={index}
+            onPress={() => router.push(element.slug as Href<string | object>)}
+          >
+            <View
+              style={[
+                styles.navigationBtn,
+                isActive
+                  ? styles.activeNavigationBtn
+                  : styles.inactiveNavigationBtn, // Conditional styles
+              ]}
+            >
+              <Image
+                source={element.iconUrl}
+                style={[
+                  styles.icons,
+                  isActive ? styles.activeicon : styles.icons,
+                ]}
+              />
+              <Text
+                style={[
+                  styles.navigationText,
+                  isActive
+                    ? styles.activeNavigationText
+                    : styles.inactiveNavigationText, // Conditional text styles
+                ]}
+              >
+                {element.title}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+    <View style={styles.devices}>
+      <View>
+        <Text style={styles.deviceText}>Devices</Text>
+        <View style={styles.line}></View>
+      </View>
+      <View style={styles.devicesContainer}>
+        {pairedDevices.length > 0 ? (
+          pairedDevices.map((device, index) => (
+            <View key={index} style={styles.deviceItem}>
+              <Text style={styles.deviceName}>{device.deviceName}</Text>
+              <Text style={styles.deviceStatus}>
+                {device.status ? "Connected" : "Disconnected"}
+              </Text>
+            </View>
+          ))
+        ) : (
+          <Text>No paired devices</Text>
+        )}
+      </View>
+    </View>
+  </>
+);
+
+
 
 const navigationElements = [
   {
@@ -100,7 +139,7 @@ const navigationElements = [
     iconUrl: require("../../assets/images/icons/recommendations.png"),
   },
   {
-    title: "Challenges",
+    title: "Assistant",
     slug: "/challenges",
     iconUrl: require("../../assets/images/icons/challenge.png"),
   },
@@ -135,6 +174,28 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     backgroundColor: "#ffffff65",
+  },
+  containermobile: {
+    position:'absolute',
+    left:30,
+    top:30,
+    zIndex:1,
+    padding: 10,
+    borderRadius: 15,
+    backgroundColor: "#ffffff",
+  },
+  toggleButton: {
+    padding: 10,
+    backgroundColor: "#ffffff",
+    borderColor:'#4E3B7A',
+    borderRadius: 50,
+    borderWidth:2,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  toggleButtonText: {
+    color: "#4E3B7A",
+    fontSize: 24,
   },
   imageContainer: {
     flexDirection: "row",

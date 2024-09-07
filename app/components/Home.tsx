@@ -57,7 +57,7 @@ const Home = () => {
       {poses.map((pose:any) => (
         <Pressable onPress={()=>router.push(`/exercise/${JSON.stringify(pose.id)}`)}><View key={pose.id} style={styles.poseContainer}>
           {pose.id==0&&console.log(pose)}
-        <Image source={imageMapping[pose.id]} style={styles.poseImage} />
+        <Image source={{uri:pose.image_url}} style={styles.poseImage} />
         <Text style={styles.poseText}>{pose.english_name}</Text>
         <Text style={styles.poseSubText}>{pose.sanskrit_name}</Text>
 
@@ -122,15 +122,24 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   poseContainer: {
-    padding: 10,
-    width:180,
+
+    // padding: 10,
+    // width:180,
+
+    padding:3,
+    width:140,
+
+
     marginBottom: 20,
     borderRadius: 10,
     shadowOffset: { width: 0, height: 2 },
   },
   poseImage: {
-    width: 200,
-    height: 150,
+    // width: 200,
+    // height: 150,
+
+    width:140,
+    height:120,
     resizeMode: 'contain',
     marginBottom: 10,
   },

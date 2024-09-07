@@ -1,9 +1,11 @@
 import { useLocalSearchParams } from 'expo-router';
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, Switch } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { StyleSheet, Text, View, Image, ScrollView, Switch, Pressable } from 'react-native';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { Svg, Rect } from 'react-native-svg';
 import YoutubeIframe from 'react-native-youtube-iframe';
+
+const poses=require('../poses.json');
 
 const LandscapeScreen = () => {
   const [isEnabled, setIsEnabled] = React.useState(false);
@@ -11,6 +13,8 @@ const LandscapeScreen = () => {
 
   const {id} = useLocalSearchParams()
   const x=id
+  
+  const O=poses[Number(id)]
   const [userArray, setUserArray] = useState([]);
   const [yogaMasterArray, setYogaMasterArray] = useState([]);
 
@@ -29,13 +33,40 @@ const LandscapeScreen = () => {
       setYogaMasterArray(generateRandomArray());
     }, 2000);
 
+    handleStartStop()
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
+  const [timer, setTimer] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const intervalRef = useRef(null);6+9
 
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
+  const handleStartStop = () => {
+    if (isRunning) {
+      clearInterval(intervalRef.current);
+    } else {
+      intervalRef.current = setInterval(() => {
+        setTimer((prevTime) => prevTime + 1);
+      }, 1000);
+    }
+    setIsRunning(!isRunning);
+  };
+
+  const handleReset = () => {
+    clearInterval(intervalRef.current);
+    setTimer(0);
+    setIsRunning(false);
+  };
 
   
 const updateSvg = (user = [], yogaMaster = []) => {
+  
     const bydefault = "black";
     const useractive = "red";
     const correct = "green";
@@ -80,7 +111,7 @@ useEffect(() => {
     <ScrollView style={styles.container}>
     {/* Your existing UI components */}
     <View style={styles.header}>
-      <Text style={styles.title}>| Camel Pose</Text>
+      <Text style={styles.title}>| {O.english_name}</Text>
       <Switch
         trackColor={{ false: "#767577", true: "#81b0ff" }}
         thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
@@ -98,7 +129,7 @@ useEffect(() => {
       <YoutubeIframe
         height={520}  // Ensure the height is enough
         width={'100%'}  // Set width to 100% to fill the parent container
-        videoId="_NNnowkcIqU"
+        videoId={O.yt_videos}
         play={true}
         onChangeState={(state) => console.log('State: ', state)}
         onReady={() => console.log('Video is ready')}
@@ -108,6 +139,8 @@ useEffect(() => {
         Start in a Kneeling Position: Kneel on the mat with your knees hip-width apart and your thighs perpendicular to the floor. Keep your feet flat and toes pointing backward.
       </Text>
     </View> */}
+    <View style={styles.toflex}>
+
     <View style={styles.healthOverviewContainer}>
       <Text style={styles.healthTitle}>Health Overview</Text>
       <View style={styles.healthMetrics}>
@@ -116,13 +149,37 @@ useEffect(() => {
         <Text style={styles.healthText}>Oxygen: 95%</Text>
       </View>
     </View>
+    <View style={styles.containertimer}>
+      <Text style={styles.timerText}>{formatTime(timer)}</Text>
+      <View style={styles.toflex}>
+        
+      <Pressable
+        style={({ pressed }) => [
+          styles.button,
+          { backgroundColor: isRunning ? '#FF6347' : '#1E1E3D' },
+          pressed && styles.pressed,
+        ]}
+        onPress={handleStartStop}
+      >
+        <Text style={styles.buttonText}>{isRunning ? 'Stop' : 'Continue'}</Text>
+      </Pressable>
+      <Pressable
+        style={({ pressed }) => [styles.button, styles.resetButton, pressed && styles.pressed]}
+        onPress={handleReset}
+      >
+        <Text style={styles.buttonText}>Reset</Text>
+      </Pressable>
+    </View>
+    </View>
+    </View>
+    
     </View>
     <View style={styles.matContainer}>
       {updateSvg(userArray,yogaMasterArray)}
     </View>
 
-    </View>
 
+    </View>
   </ScrollView>
   );
 };
@@ -136,6 +193,39 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     padding: 10,
     width:'100%'
+  },
+  containertimer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width:200,
+    backgroundColor: '#FFF',
+  },
+  toflex:{
+    flexDirection:'row'
+  },
+  timerText: {
+    fontSize: 48,
+    marginBottom: 20,
+    color: '#000',
+  },
+  button: {
+    paddingHorizontal: 40,
+    paddingVertical: 10,
+    marginHorizontal:10,
+    borderRadius: 25,
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  resetButton: {
+    backgroundColor: '#6A5ACD',
+  },
+  pressed: {
+    opacity: 0.7,
   },
   header: {
     flexDirection: 'row',
@@ -184,7 +274,7 @@ margin:8,
     backgroundColor: '#f0f8e0',
     padding: 15,
     borderRadius: 10,
-    width:'95%',
+    width:400,
     borderColor: '#90ee90',
     borderWidth: 1,
   },
@@ -194,11 +284,12 @@ margin:8,
     color: '#388e3c',
   },
   healthMetrics: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
   },
   healthText: {
     fontSize: 14,
+    margin:6,
     color: '#333',
   },
   matContainer: {
