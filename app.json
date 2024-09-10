@@ -1,10 +1,12 @@
-
 {
   "expo": {
     "name": "Ai-YogaMat",
     "slug": "Ai-YogaMat",
     "version": "1.0.0",
     "orientation": "portrait",
+    "extra": {
+      "OPENAI_API_KEY": "sk-989fywrKQTKnlIwgX59q8zVwIKPnX0n2ReRc61Yha8T3BlbkFJiIQ4-OWg-gmKm4_4ypynQfl0Q5JNJWq4QmnPVo67IAs"
+    },
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
@@ -13,13 +15,14 @@
       "resizeMode": "contain",
       "backgroundColor": "#f6f6f6"
     },
-    
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.munirsiddiqui.AiYogaMat"
     },
     "android": {
       "permissions": [
-        "INTERNET"
+        "INTERNET",
+        "android.permission.RECORD_AUDIO"
       ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
@@ -34,7 +37,14 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",
+      [
+        "@react-native-voice/voice",
+        {
+          "microphonePermission": "CUSTOM: Allow $(PRODUCT_NAME) to access the microphone",
+          "speechRecognitionPermission": "CUSTOM: Allow $(PRODUCT_NAME) to securely recognize user speech"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

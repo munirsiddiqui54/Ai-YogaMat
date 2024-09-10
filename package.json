@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
+    "@google/generative-ai": "^0.17.1",
+    "@react-native-voice/voice": "^3.2.4",
     "@react-navigation/native": "^6.0.2",
     "axios": "^1.7.7",
     "expo": "~51.0.28",

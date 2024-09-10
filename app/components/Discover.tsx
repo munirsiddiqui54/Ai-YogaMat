@@ -6,7 +6,8 @@ import { ScrollView } from 'react-native'
 const Discover = () => {
   return (
     <ScrollView style={styles.container}>
-      <Text>Discover</Text>
+      <Text>Discover t he truth</Text>
+    
     </ScrollView>
   )
 }

@@ -3,9 +3,12 @@ import { StyleSheet, ImageBackground } from 'react-native';
 import Sidebar from './components/Sidebar';
 import Profile from './components/Profile';
 
+
 const backgd = require('../assets/images/backgd.jpeg');
 
+
 const profile = () => {
+  
   return (
     <ImageBackground source={backgd} style={styles.backgroundImage}>
       {/* Overlay to make the background image dull */}
