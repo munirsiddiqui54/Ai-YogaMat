@@ -2,14 +2,14 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase} from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyApfNv2NzNd0d8pKxi8av-yBIw-HHWnr5g",
-  authDomain: "aura-6b9c6.firebaseapp.com",
-  databaseURL: "https://aura-6b9c6-default-rtdb.firebaseio.com",
-  projectId: "aura-6b9c6",
-  storageBucket: "aura-6b9c6.appspot.com",
-  messagingSenderId: "427155757445",
-  appId: "1:427155757445:web:fb2dd288be7a6ddd324cec",
-  measurementId: "G-9S2WCJG6ME"
+  apiKey: "AIzaSyDi4XvA20KocgRCHGUt9riEfFozlgDEZys",
+  authDomain: "auramat-6d8f4.firebaseapp.com",
+  databaseURL: "https://auramat-6d8f4-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "auramat-6d8f4",
+  storageBucket: "auramat-6d8f4.appspot.com",
+  messagingSenderId: "1037447784611",
+  appId: "1:1037447784611:web:4cc162d8bc8c6c628e3716",
+  measurementId: "G-47XRH5BGR3"
 };
   
   const app = initializeApp(firebaseConfig);
